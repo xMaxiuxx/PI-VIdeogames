@@ -1,7 +1,9 @@
 require('dotenv').config();
-const { Sequelize } = require('sequelize');
+const { Sequelize, BelongsToMany } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+// const VgameModel= require("./models/Videogame");
+// const Genres = require ("./models/Genre");
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
@@ -30,10 +32,14 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Videogame } = sequelize.models;
+const { Genre , Videogame} = sequelize.models;
 
-// Aca vendrian las relaciones
-// Product.hasMany(Reviews);
+// VgameModel(sequelize);
+// Genres(sequelize);
+
+
+Videogame.belongsToMany(Genre, { through: 'videogame_genres' });
+Genre.belongsToMany(Videogame, { through: 'videogame_genres' });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
