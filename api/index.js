@@ -26,3 +26,4 @@ conn.sync({ force: true }).then(() => {
     console.log(' listening VAMOO on PORT 3001'); // eslint-disable-line no-console
   });
 });
+ 
