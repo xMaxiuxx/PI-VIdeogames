@@ -2,23 +2,25 @@ const { Router } = require("express")
 
 const videogamesRouter= Router();
 
-
+const {getVideogamesHandler, getVideogamesIdHandler, createVideogamesHandler, getVideogamesQHandler} = require("../handlers/videogamesHandler")
   //!---------------------------------RUTAS GET VIDEOGAMES-----------------------------//
-    videogamesRouter.get("/:id", (req, res )=>{
-        res.status(200).send("NIY : ESTA RUTA TRAE EL DETALLE DE CADA VIDEOGAME");
-  });
-    videogamesRouter.get("/", (req, res )=>{
-        res.status(200).send("NIY : ESTA RUTA TRAE LA INFO DE TODOS LOS VIDEOGAMES");
-  });
+    videogamesRouter.get("/:id", getVideogamesIdHandler);
+    videogamesRouter.get("/", getVideogamesHandler);
+
+
+
+//  Llamar a la funcion que obtiene los datos de la db //
+//  Llamar a la funcion que obtiene los datos de la api externa //
+//  unir los datos unificando el formato //
+//  cuando tengal los datos ,  respondr con  los datos //
+
+  
     //!-------------------------------RUTAS POST VIDEOGAMES-----------------------------//
 
-   videogamesRouter.post("/", (req, res )=>{
-    res.status(201).send("NIY: ESTA RUTA CREA UN NUEVO VIDEOGAME");
-  });
+   videogamesRouter.post("/", createVideogamesHandler);
 
-    // videogamesRouter.get("/", (req, res )=>{
-    //     res.status(200).send("OK");
-    // });
 
+ 
+    //!  NIY === NOT IMPLEMENTED YET
 
 module.exports = videogamesRouter

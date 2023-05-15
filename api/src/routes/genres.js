@@ -1,13 +1,9 @@
 
 const { Router } = require('express');
-
+const {getGenresHandler} = require("../handlers/genresHandler")
 const genres = Router();
   //!---------------------------------RUTA Get Genres -----------------------------//
-  
- 
-genres.get("/", (req, res )=>{
-    res.status(200).send("NIY: ESTA RUTA TRAE TODOS LOS GENEROS DE VIDEOGAMES");
-  });
 
+  genres.get("/" , getGenresHandler)
 
 module.exports = genres;
