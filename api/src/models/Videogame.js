@@ -38,7 +38,7 @@ module.exports = (sequelize) => {
       rating:{
         type:DataTypes.STRING,
         allowNull:false,
-     }, 
+     },
 
   },
   {timestamps:false});

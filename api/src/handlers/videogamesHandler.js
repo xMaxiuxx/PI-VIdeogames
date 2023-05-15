@@ -1,25 +1,40 @@
-const {createVideogames} = require("../controllers/videogamesControllers")
-const getVideogamesHandler = (req,  res) =>{
+const {createVideogames, getVideogameById} = require("../controllers/videogamesControllers")
+
+ //!!const source ="api" "bdd"
  
-  const  {name} = req.query;
-  if(name)
-    res.send(`quiero buscar todos los videogames que se llamen ${name}`);
-  else
-    res.send( "Quiero enviar todos los videogames ");
-
-
-}
-
-const getVideogamesIdHandler = (req, res )=> {
-
+ const getVideogamesHandler = (req,  res) =>{
+   
+   const  {name} = req.query;
+   if(name)
+   res.send(`quiero buscar todos los videogames que se llamen ${name}`);
+   else
+   res.send( "Quiero enviar todos los videogames ");
+   
+   
+  }
+  
+  const getVideogamesIdHandler = async (req, res )=> {
+    
     const {id} = req.params;
 
-   res.status(200).send(`Va a enviar el detalle del videogame de ID ${id}`);
+    const source = isNaN(id)  ? "bdd" : "api";
+   
+   try {
 
+    const videogame = await getVideogameById(id, source);
+    res.status(200).json(videogame);
+   } catch (error) {
+    res.status(400).json({error: error.message});
+
+   }
+   
 };
+
+
 const createVideogamesHandler= async (req,  res )=>{
+
+  const {id, name, description,platform,image,releaseDate,rating} = req.body;
   try {
-    const {id, name, description,platform,image,releaseDate,rating} = req.body;
     const newVideogame = await createVideogames(id, name, description,platform,image,releaseDate,rating)
     res.status(201).json({newVideogame})
   } catch (error) {
