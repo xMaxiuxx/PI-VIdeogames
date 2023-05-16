@@ -24,7 +24,7 @@ const {createVideogames, getVideogameById} = require("../controllers/videogamesC
     const videogame = await getVideogameById(id, source);
     res.status(200).json(videogame);
    } catch (error) {
-    res.status(400).json({error: error.message});
+    res.status(500).json({error: error.message});
 
    }
    
@@ -38,7 +38,7 @@ const createVideogamesHandler= async (req,  res )=>{
     const newVideogame = await createVideogames(id, name, description,platform,image,releaseDate,rating)
     res.status(201).json({newVideogame})
   } catch (error) {
-    res.status(400).json({error:error.message});
+    res.status(500).json({error:error.message});
   }
 };
 
