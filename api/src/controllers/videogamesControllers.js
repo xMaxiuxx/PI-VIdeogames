@@ -15,7 +15,7 @@ await Videogame.create({id, name, description,platform,image,releaseDate,rating}
 const getVideogameById = async (id, source) =>  {
     var videogame 
      //source === "api"
-     //? (await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`))
+     // (await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`))
      //.data 
      //: await Videogame.findByPk(id);
     
@@ -79,7 +79,7 @@ const getAllVideogames = async () =>{
 // buscar de la bdd
     const databaseVideogames = await Videogame.findAll()
 // buscar de la api
-    const apiVideogamesRaw =  ( await axios.get("https://api.rawg.io/api/games?key=3b1d82ed2fe04c53b0df19e02e0228a8")).data
+    const apiVideogamesRaw =  ( await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)).data
 
     // unificar lo que trae
     // const apiVideogames = cleanArray();
@@ -88,8 +88,28 @@ const getAllVideogames = async () =>{
     return mapResponse(databaseVideogames, apiVideogamesRaw)
 };
 
+// Tengo que buscar los videogames por query (name)
+const searchVideoGameByName= async  (name)=>{
+   /*Esta ruta debe obtener los primeros 15 videojuegos 
+   que se encuentren con la palabra recibida por query.
 
-  const searchVideoGameByName= ()=>{
+Debe poder buscarlo independientemente de mayúsculas o minúsculas.
+
+Si no existe el videojuego, debe mostrar un mensaje adecuado.
+
+Debe buscar tanto los de la API como los de la base de datos*/
+
+
+    const databaseVideogames = await Videogame.findAll({where: {name : name }});
+
+
+    const apiVideogamesRaw =  ( await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`)).data
+
+    // if (mapResponse.length === 0)  res.send('No se encontraron videojuegos.');
+        // No se encontraron videojuegos
+        return mapResponse(databaseVideogames,apiVideogamesRaw);
+
+
 }
 
 module.exports = {

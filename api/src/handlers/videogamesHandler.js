@@ -1,18 +1,16 @@
-const {createVideogames, getVideogameById} = require("../controllers/videogamesControllers")
+const {createVideogames, getVideogameById,searchVideoGameByName,getAllVideogames} = require("../controllers/videogamesControllers")
 
  //!!const source ="api" "bdd"
  
- const getVideogamesHandler = (req,  res) =>{
+ const getVideogamesHandler = async (req,  res) => {
+   const {name} = req.query;
+   const results = name ? await searchVideoGameByName(name) : await getAllVideogames();
    
-   const  {name} = req.query;
-   if(name)
-   res.send(`quiero buscar todos los videogames que se llamen ${name}`);
-   else
-   res.send( "Quiero enviar todos los videogames ");
-   
-   
-  }
+   res.status(200).json(results);
+
+  };
   
+
   const getVideogamesIdHandler = async (req, res )=> {
     
     const {id} = req.params;
@@ -31,6 +29,7 @@ const {createVideogames, getVideogameById} = require("../controllers/videogamesC
 };
 
 
+
 const createVideogamesHandler= async (req,  res )=>{
 
   const {id, name, description,platform,image,releaseDate,rating} = req.body;
@@ -38,7 +37,7 @@ const createVideogamesHandler= async (req,  res )=>{
     const newVideogame = await createVideogames(id, name, description,platform,image,releaseDate,rating)
     res.status(201).json({newVideogame})
   } catch (error) {
-    res.status(500).json({error:error.message});
+    res.status(400).json({error:error.message});
   }
 };
 
