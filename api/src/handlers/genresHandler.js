@@ -1,10 +1,12 @@
-const getGenresHandler = (req, res )=>{
-    const {gameId ,id , title, } =req.body;
-  res.status(200).send(`traeme estos generos :
-  gameId:${gameId},
-  id:    ${id},
-  title: ${title},
-  `)
+const {getGenrescontrollers} = require("../controllers/genresController")
+const getGenresHandler = async (req, res )=>{
+
+  
+  const retornofn = await getGenrescontrollers()
+  //console.log(retornofn)
+  res.status(200).send (retornofn)
+  
+
   };
 
 

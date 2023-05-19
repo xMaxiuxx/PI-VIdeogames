@@ -77,7 +77,11 @@ function mapResponse(databaseVideogames, apiVideogamesRaw){
 
 const getAllVideogames = async () =>{
 // buscar de la bdd
-    const databaseVideogames = await Videogame.findAll()
+    const databaseVideogames = await Videogame.findAll();
+    
+    
+    
+   
 // buscar de la api
     const apiVideogamesRaw =  ( await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)).data
 
