@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQazyA2Fc_cHQMrySenYSN0Cl4A-5Na7XzZSV4pIrq7KKNPlifFzNW-MjWdQEyoBedVshk&usqp=CAU");  */
+ /* padding:30% */
 }
 
 .App-logo {
@@ -26,6 +28,7 @@
 
 .App-link {
   color: #61dafb;
+
 }
 
 @keyframes App-logo-spin {
