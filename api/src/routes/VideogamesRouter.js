@@ -2,7 +2,7 @@ const { Router } = require("express")
 
 const videogamesRouter= Router();
 
-const {getVideogamesHandler, getVideogamesIdHandler, createVideogamesHandler, getVideogamesQHandler} = require("../handlers/videogamesHandler")
+const {getVideogamesHandler, getVideogamesIdHandler, createVideogamesHandler,} = require("../handlers/videogamesHandler")
   //!---------------------------------RUTAS GET VIDEOGAMES-----------------------------//
     videogamesRouter.get("/:id", getVideogamesIdHandler);
     videogamesRouter.get("/", getVideogamesHandler);

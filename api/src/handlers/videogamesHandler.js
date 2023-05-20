@@ -32,15 +32,15 @@ const {createVideogames, getVideogameById,searchVideoGameByName,getAllVideogames
 
 const createVideogamesHandler= async (req,  res )=>{
 
-  const {id, name, description,platform,image,releaseDate,rating} = req.body;
+
+  const {id, name, description,platforms,image,releaseDate,rating} = req.body;
   try {
-    const newVideogame = await createVideogames(id, name, description,platform,image,releaseDate,rating)
+    const newVideogame = await createVideogames(id, name, description,platforms,image,releaseDate,rating)
     res.status(201).json({newVideogame})
   } catch (error) {
     res.status(400).json({error:error.message});
   }
 };
-
 
 
 
