@@ -8,7 +8,8 @@ function Card({videogame}) {
     <div className="card-container">
       <Link to={`home/${videogame.id}`}><p>{videogame.name} </p></Link>
       <img src={videogame.image} alt="" />
-      <p>Genres:{videogame.genres} </p>
+      <h2 classNAme="genres" >GENRES {videogame.      genres} </h2>
+      <div>RATING ⭐ {videogame.rating}  </div>
     </div>
   );
 }

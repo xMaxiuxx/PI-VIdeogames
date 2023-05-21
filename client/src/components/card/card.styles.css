@@ -26,3 +26,7 @@ img{
 .card-container:hover{
     transform: scale(1.05);
 }
+.genres{
+    text-align: center;
+   
+}

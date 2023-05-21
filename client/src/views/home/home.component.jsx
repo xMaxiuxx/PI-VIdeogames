@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { getVideogames, getVideogamesByName } from '../../redux/actions';
 
 import Cards from '../../components/cards/cards.component';
@@ -85,7 +84,7 @@ function Home() {
 
   return (
     <div className='home'>
-      <h2 className='home-title'>Home Page</h2>
+      <h1 className='home-title'>GAMES HOME</h1>
       <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
       <Cards allVideogames={games}/>
       <button onClick={prevHandler}>Prev</button>

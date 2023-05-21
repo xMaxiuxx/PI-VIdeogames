@@ -1,0 +1,21 @@
+
+.landing-container{
+    background-image: url("https://www.xtrafondos.com/descargar.php?id=7962&resolucion=2560x1440");
+    background-position: center center;
+    background-attachment: fixed;
+    background-size:cover;
+    background-repeat: no-repeat;
+    height: 1800px;
+    /* width: 2000px; */
+    padding: 4px;
+
+} 
+.landing-container:hover {
+    border-radius:60%;
+        filter: sepia(60%);
+
+}
+
+
+
+
