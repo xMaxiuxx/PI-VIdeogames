@@ -62,7 +62,7 @@ const mapResponseFromApi = (videogame) =>{
         id: videogame.id.toString(),
         name: videogame.name,
         description: videogame.description,
-        platforms: videogame.platforms.map(elem => elem.platform.name),
+        platforms: videogame.platforms?.map(elem => elem.platform.name),
         image: videogame.background_image,
         releaseDate: videogame.released,
         rating: videogame.rating,
