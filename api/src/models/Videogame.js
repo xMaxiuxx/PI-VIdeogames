@@ -9,7 +9,6 @@ module.exports = (sequelize) => {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
-      
     },
     name: {
       type: DataTypes.STRING,
@@ -20,26 +19,22 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-     
-    platform: {
+    platforms: {
+      type: DataTypes.STRING,
+      allowNull:false,
+    },
+    image:{
       type:DataTypes.STRING,
       allowNull:false,
-
-     },
-     image:{
+    },
+    releaseDate : {
       type:DataTypes.STRING,
       allowNull:false,
-     },
-      releaseDate : {
-        type:DataTypes.STRING,
-        allowNull:false,
-     },
-
-      rating:{
-        type:DataTypes.STRING,
-        allowNull:false,
-     },
-    
+    },
+    rating:{
+      type:DataTypes.STRING,
+      allowNull:false,
+    },
   },
   {timestamps:false});
 };

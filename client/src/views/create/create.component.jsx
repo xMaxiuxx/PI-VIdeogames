@@ -6,21 +6,25 @@ import { useDispatch, useSelector } from 'react-redux';
 function Create() {
 
   const [form, setForm] = useState({
-      name:"",
-      description:"",
-      platforms:"",
-      image:"",
-      releaseDate:"",
-      rating:"",
+      name: "",
+      description: "",
+      platforms: "",
+      image: "",
+      releaseDate: "",
+      rating: "",
+      genre1: "",
+      genre2: "",
   })
 
   const [errors, setErrors] = useState({
-      name:"",
-      description:"",
-      platforms:"",
-      image:"",
-      releaseDate:"",
-      rating:"",
+      name: "",
+      description: "",
+      platforms: "",
+      image: "",
+      releaseDate: "",
+      rating: "",
+      genre1: "",
+      genre2: "",
   })
 
   const handleChange = (event)=>{
@@ -70,7 +74,7 @@ function Create() {
         </div>
 
         <div>
-            <label>releaseDate</label>
+            <label>Release Date</label>
            <input type="text" value={form.releaseDate} onChange={handleChange} name="releaseDate" />
         </div>  
         <div>
