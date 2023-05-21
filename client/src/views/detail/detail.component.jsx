@@ -14,13 +14,14 @@ function Detail() {
   },[dispatch])
   
   return (
-    <div >
+    <div className='detail-container'>
       <h2>{videogameById.name} </h2>
       <img src={videogameById.image} alt="" />
       <p>ReleaseDate:{videogameById.releaseDate} </p>
       <p>Platforms:{videogameById.platforms} </p>
       <p>{videogameById.description} </p>
       <p>Rating:{videogameById.rating} </p>
+      <p>Genres:{videogameById.genres} </p>
     </div>
   );
 }

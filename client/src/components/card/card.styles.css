@@ -21,7 +21,6 @@ img{
 .head_card{
     display: flex; 
     justify-content: space-between;
-    
 } 
 
 .card-container:hover{

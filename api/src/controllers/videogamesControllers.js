@@ -2,6 +2,7 @@ require('dotenv').config();
 const {API_KEY} = process.env
 const{ Videogame, Genre} = require("../db");
 const axios = require("axios");
+const {Sequelize} = require("sequelize");
 
 //!---------------------------------Crea los videogames----------------------
 const createVideogames = async  (id, name, description, platforms, image, releaseDate, rating, genres) => {
@@ -65,6 +66,7 @@ const mapResponseFromApi = (videogame) =>{
         image: videogame.background_image,
         releaseDate: videogame.released,
         rating: videogame.rating,
+        genres: videogame.genres?.map(genre => genre.name),
         created: false,
     }
 }
@@ -86,10 +88,15 @@ function mapResponse(databaseVideogames, apiVideogamesRaw){
 const getAllVideogames = async () =>{
     const databaseVideogames = await Videogame.findAll({
         include: [ { model: Genre, as: "genres", through: { attributes: [], } }, ],
-      });
+    });
    
-    const apiVideogamesRaw = ( await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)).data
-    
+    var apiVideogamesRaw = {results:[]}
+    var url = `https://api.rawg.io/api/games?key=${API_KEY}`
+    for(let i=0; i<=4; i++){
+        const response = ( await axios.get(url)).data
+        url = response.next
+        apiVideogamesRaw.results = apiVideogamesRaw.results.concat(response.results)
+    }
     return mapResponse(databaseVideogames, apiVideogamesRaw)
 };
 
@@ -99,14 +106,18 @@ const searchVideoGameByName = async  (name)=>{
     Debe poder buscarlo independientemente de mayúsculas o minúsculas.
     Si no existe el videojuego, debe mostrar un mensaje adecuado.
     Debe buscar tanto los de la API como los de la base de datos*/
-    const databaseVideogames = await Videogame.findAll({where: {name : name }}, {
+    var apiVideogamesRaw = [];
+    const databaseVideogames = await Videogame.findAll({where: {name: {[Sequelize.Op.iLike]: `%${name}%`}}}, {
             include: [ { model: Genre, as: "genres", through: { attributes: [], } }, ], });
 
-    const apiVideogamesRaw =  ( await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`)).data
+    if (databaseVideogames?.length < 15){
+        apiVideogamesRaw =  ( await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`)).data
+    }
+    
 
     // if (mapResponse.length === 0)  res.send('No se encontraron videojuegos.');
     // No se encontraron videojuegos
-    return mapResponse(databaseVideogames,apiVideogamesRaw);
+    return mapResponse(databaseVideogames, apiVideogamesRaw).slice(0, 15);
 }
 
 module.exports = {

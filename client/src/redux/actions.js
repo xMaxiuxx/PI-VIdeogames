@@ -4,6 +4,7 @@ export const GET_VIDEOGAMES = "GET_VIDEOGAMES"
 export const GET_BY_NAME = "GET_BY_NAME"
 export const GET_BY_ID = "GET_BY_ID"
 export const POST_CREATE = "POST_CREATE"
+export const GET_GENRES = "GET_GENRES"
 
 export function getVideogames(){
     return async function(dispatch){
@@ -37,9 +38,20 @@ export function getVideogameById(id){
 
 export function postVideogame(body){
     return async function(dispatch){
+        body.genres = [body.genre1, body.genre2]
         const response = (await axios.post(`http://localhost:3001/videogames`, body)).data;
         return dispatch({
             type: "POST_CREATE",
+            payload: response
+        })
+    };
+}
+
+export function getGenres(){
+    return async function(dispatch){
+        const response = (await axios("http://localhost:3001/genres")).data;
+        return dispatch({
+            type: "GET_GENRES",
             payload: response
         })
     };

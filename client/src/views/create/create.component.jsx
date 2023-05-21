@@ -1,7 +1,8 @@
 import './create.styles.css';
 import { useState } from "react";
-import { postVideogame } from '../../redux/actions';
+import { getGenres, postVideogame } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 function Create() {
 
@@ -43,7 +44,7 @@ function Create() {
   }
 
   const dispatch = useDispatch();
-  const postVidState = useSelector((state)=>state.createVideogame);
+  const postVidState = useSelector((state)=>state.videogameCreated);
 
   function handleSubmit(event){
     event.preventDefault();
@@ -51,35 +52,69 @@ function Create() {
     console.log(postVidState)
   }
 
+  const genres = useSelector((state)=>state.allGenres);
+  useEffect(()=>{
+    dispatch(getGenres())
+  },[dispatch])
+
 
   return (
     <div className='create-container'>
       <form onSubmit={handleSubmit}>
         <div>
             <label>Name</label>                                         
-            <input type="text" value={form.name} onChange={handleChange} name="name" />
+            <input type="text" value={form.name} onChange={handleChange} name="name" placeholder='Name'/>
         </div>
         <div>
             <label>Description</label>
-            <input type="text" value={form.description} onChange={handleChange} name="description" />
+            <input type="text" value={form.description} onChange={handleChange} name="description" placeholder='Description'/>
         </div>
         <div>
             <label>Platforms</label>
-            <input type="text" value={form.platforms} onChange={handleChange} name="platforms" />
+            <select name="platforms" value={form.platforms} onChange={handleChange} >
+              <option value='Android'>Android</option>
+              <option value='Linux'>Linux</option>
+              <option value='macOS'>macOS</option>
+              <option value='PC'>PC</option>
+              <option value='PlayStation 3'>PlayStation 3</option>
+              <option value='PlayStation 4'>PlayStation 4</option>
+              <option value='PlayStation 5'>PlayStation 5</option>
+              <option value='Xbox 360'>Xbox 360</option>
+              <option value='Xbox One'>Xbox One</option>
+              <option value='Xbox Series S/X'>Xbox Series S/X</option>
+            </select>
         </div>
 
         <div>
             <label>Image</label>
-            <input type="text" value={form.image} onChange={handleChange} name="image" />
+            <input type="text" value={form.image} onChange={handleChange} name="image" placeholder='Insert image url'/>
         </div>
 
         <div>
             <label>Release Date</label>
-           <input type="text" value={form.releaseDate} onChange={handleChange} name="releaseDate" />
+           <input type="text" value={form.releaseDate} onChange={handleChange} name="releaseDate" placeholder='Release Date'/>
         </div>  
         <div>
             <label>Rating</label>
-            <input type="text" value={form.rating} onChange={handleChange} name="rating" />
+            <input type="text" value={form.rating} onChange={handleChange} name="rating" placeholder='Rating'/>
+        </div>
+        <div>
+            <label>First Genre</label>
+            <select name="genre1" value={form.genre1} onChange={handleChange} >
+              <option value='select'>Select one genre</option>
+              {genres?.map(genre=>
+                <option value={genre}>{genre}</option>
+              )}
+            </select>
+        </div>
+        <div>
+            <label>Second Genre</label>
+            <select name="genre2" value={form.genre2} onChange={handleChange} >
+              <option value='select'>Select one genre</option>
+              {genres?.map(genre=>
+                <option value={genre}>{genre}</option>
+              )}
+            </select>
         </div>
         <button type="submit">CREATE GAME</button>
       </form>

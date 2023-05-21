@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from "react-router-dom";
 
 import { getVideogames, getVideogamesByName } from '../../redux/actions';
 
@@ -24,10 +25,13 @@ function Home() {
       dispatch(getVideogamesByName(searchString))
     }
 
-    /* filtro sobre estados
+    // filtro sobre estados
     const [filtered, setFiltered] = useState(allVideogames);
-    const [searchString, setSearchString] = useState("");
-
+    var { page } = useParams();
+    if (!page){
+      page=1
+    }
+    /*
     function handleChange(event){
       event.preventDefault();
       setSearchString(event.target.value)
@@ -40,21 +44,20 @@ function Home() {
       );
       setFiltered(filtered);
     }*/
-
+    console.log(page)
+    console.log(allVideogames)
     useEffect(()=>{
-        dispatch(getVideogames())
-        /*
-            return (()=>{
-                clearDetail()
-            })
-        */
+        dispatch(getVideogames());
+        setFiltered(allVideogames.slice(page,page+20));
     },[dispatch])
 
   return (
     <div className='home'>
       <h2 className='home-title'>Home Page</h2>
       <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
-      <Cards allVideogames={allVideogames}/>
+      <Cards allVideogames={filtered}/>
+      <Link to={`home?page=${(page===1)?1:page-1}`}>Previous</Link>
+      <Link to={`home?page=${page+1}`}>Nexst</Link>
     </div>
   );
 }

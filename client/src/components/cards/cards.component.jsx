@@ -3,11 +3,16 @@ import './cards.styles.css';
 
 function Cards({allVideogames}) {
   const videogames = allVideogames;
+  if (videogames?.length>0){
+    return (
+      <div className="cards-container">
+          {videogames.map(videogame=> <Card videogame={videogame}/>)}
+      </div>
+    );
+  }
   return (
     <div className="cards-container">
-        {videogames?.map(videogame=>
-        <Card videogame={videogame}/>
-      )}
+        <h2>Game Not Found</h2>
     </div>
   );
 }
