@@ -20,17 +20,16 @@ function Home() {
   function handleSubmit(event){
     event.preventDefault();
     dispatch(getVideogamesByName(searchString))
-    setGames([...allVideogames].splice(0,GAMES_PER_PAGE))
+    activeVideogames = [...allVideogames].splice(0,GAMES_PER_PAGE)
   }
   useEffect(()=>{
     dispatch(getVideogames());
-    setGames([...allVideogames].splice(0,GAMES_PER_PAGE))
-    setCurrentPage(0);
   },[dispatch])
 
   //!--------------------------------------------------- Paginado-----------------------
   const GAMES_PER_PAGE = 20;
-  const [games ,setGames] = useState([...allVideogames].splice(0,GAMES_PER_PAGE))
+  //const [games ,setGames] = useState([...allVideogames].splice(0,GAMES_PER_PAGE))
+  var activeVideogames = (useSelector((state)=>state.activeVideogames)).splice(0,GAMES_PER_PAGE);
   const [currentPage,setCurrentPage]= useState(0);
 
   const nextHandler = ()=>{
@@ -39,7 +38,7 @@ function Home() {
     const nextPage = currentPage +1 ;
     const firstGame = nextPage * GAMES_PER_PAGE;
     if (firstGame >= totalVideogames) return;
-    setGames([...allVideogames].splice(firstGame,GAMES_PER_PAGE))
+    activeVideogames = [...allVideogames].splice(firstGame,GAMES_PER_PAGE)
     setCurrentPage(nextPage);
   }
 
@@ -48,7 +47,7 @@ function Home() {
     const prevPage = currentPage -1;
     if (prevPage < 0)return;
     const firstGame = prevPage * GAMES_PER_PAGE;
-    setGames([...allVideogames].splice(firstGame,GAMES_PER_PAGE))
+    activeVideogames = [...allVideogames].splice(firstGame,GAMES_PER_PAGE)
     setCurrentPage(prevPage);
   }
 
@@ -63,7 +62,7 @@ function Home() {
         return 0
       })
     console.log(`orderAsc ${allVideogames.lenght} after`);
-    setGames(allVideogames.splice(0,GAMES_PER_PAGE))
+    activeVideogames = allVideogames.splice(0,GAMES_PER_PAGE)
     setCurrentPage(0);
   }
 
@@ -77,16 +76,25 @@ function Home() {
         return 0
       })
     console.log(`orderDesc ${allVideogames.lenght} after`);
-    setGames(allVideogames.splice(0, GAMES_PER_PAGE))
+    activeVideogames = allVideogames.splice(0, GAMES_PER_PAGE)
     setCurrentPage(0);
   }
 
+  //!--------------------------------------------------- Loading -----------------------
+  const isLoading = useSelector((state)=>state.isLoading);
 
+  if (isLoading) {
+    return (<div className='home'>
+              <h1 className='home-title'>GAMES HOME</h1>
+              <img src="/images/loading-gif-rotate-pulsating.gif" />
+            </div>
+      );
+  }
   return (
     <div className='home'>
       <h1 className='home-title'>GAMES HOME</h1>
       <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
-      <Cards allVideogames={games}/>
+      <Cards allVideogames={activeVideogames}/>
       <button onClick={prevHandler}>Prev</button>
       <button onClick={nextHandler} >Next</button>
       <button onClick={orderAsc} >Order Asc</button>
