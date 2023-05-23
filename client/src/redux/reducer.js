@@ -10,7 +10,7 @@ function rootReducer(state = initialState, action){
         case GET_VIDEOGAMES:
             return {...state, allVideogames:action.payload, allVideogamesCopy:action.payload, activeVideogames:action.payload, isLoading:false}
         case GET_BY_NAME:
-            return {...state, allVideogames:action.payload}
+            return {...state, allVideogames:action.payload, activeVideogames:action.payload}
         case GET_BY_ID:
             return {...state, videogameById:action.payload}
         case POST_CREATE:

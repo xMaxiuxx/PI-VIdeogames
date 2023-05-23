@@ -4,12 +4,12 @@ import { Link } from "react-router-dom"
 function Navbar({handleChange, handleSubmit}) {
   return (
     <div className='search-box'>
-      <form onChange={handleChange}>
-        <input placeholder='Search' type="search"/>
+      <form >
+        <input placeholder='Search' type="search" onChange={handleChange}/>
         <button onClick={handleSubmit} type="submit">Search</button>
       </form>
-      <Link to="/home">HOME</Link>
-      <Link to="/create">FORM</Link>
+      <Link className='Home-Cave' to="/home">HOME CAVE</Link>
+      <Link  className='Create-Game ' to="/create">CREATE GAME</Link>
     </div>
   );
 }

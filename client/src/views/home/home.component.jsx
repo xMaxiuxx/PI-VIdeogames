@@ -85,20 +85,22 @@ function Home() {
 
   if (isLoading) {
     return (<div className='home'>
-              <h1 className='home-title'>GAMES HOME</h1>
-              <img src="/images/loading-gif-rotate-pulsating.gif" />
+
+              { <img className='gif-home' src="https://venturebeat.com/wp-content/uploads/2014/10/loading_desktop_by_brianmccumber-d41z4h6.gif?fit=400%2C225&strip=all" /> }
+
+
             </div>
       );
   }
   return (
     <div className='home'>
-      <h1 className='home-title'>GAMES HOME</h1>
+      <h1 className='home-title'>Cave Of Games</h1>
       <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
       <Cards allVideogames={activeVideogames}/>
-      <button onClick={prevHandler}>Prev</button>
-      <button onClick={nextHandler} >Next</button>
-      <button onClick={orderAsc} >Order Asc</button>
-      <button onClick={orderDesc} >Order Desc</button>
+      <button className=" Buton-Prev" onClick={prevHandler}>Prev</button>
+      <button className=" Buton-Next"onClick={nextHandler} >Next</button>
+      <button className=" Buton-Asc"onClick={orderAsc} >Order Asc</button>
+      <button className=" buton-Desc"onClick={orderDesc} >Order Desc</button>
     </div>
   );
 }

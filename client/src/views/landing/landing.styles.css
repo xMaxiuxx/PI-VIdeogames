@@ -1,21 +1,49 @@
 
 .landing-container{
-    background-image: url("https://www.xtrafondos.com/descargar.php?id=7962&resolucion=2560x1440");
+    background-image: url("https://fondosmil.com/fondo/17009.jpg");
     background-position: center center;
     background-attachment: fixed;
     background-size:cover;
-    background-repeat: no-repeat;
-    height: 1800px;
+    /* background-repeat: no-repeat; */
+    /* height: 850px; */
     /* width: 2000px; */
-    padding: 4px;
+    padding: 30px;
+    overflow: hidden;
 
 } 
 .landing-container:hover {
-    border-radius:60%;
-        filter: sepia(60%);
+   
+        filter: sepia(30%);
+
+}
+
+.landing-title{
+    font-family: fantasy;
+    font-size:1000%;
+    text-align: center
+    
+}
+
+.buton-link{
+color: black;
+text-decoration: none;
+}
+
+.buton-link:hover{
+color: rgba(253, 181, 38, 0.618);
+text-decoration: none;
+background-color: rgba(0, 0, 0, 0.724);
+border-radius: 20%;
+
 
 }
 
 
+.landing-titlePI{
+color: rgba(253, 181, 38, 0.459);
+font-family: fantasy;
+font-size:125%;
+vertical-align: bottom;
 
 
+}

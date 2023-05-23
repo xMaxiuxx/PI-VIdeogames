@@ -60,7 +60,7 @@ function Create() {
 
   return (
     <div className='create-container'>
-      <form onSubmit={handleSubmit}>
+      <form className='form' onSubmit={handleSubmit}>
         <div>
             <label>Name</label>                                         
             <input type="text" value={form.name} onChange={handleChange} name="name" placeholder='Name'/>

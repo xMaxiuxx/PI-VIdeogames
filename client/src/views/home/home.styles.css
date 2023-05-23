@@ -11,10 +11,11 @@ code {
     margin-top: 75px;
     margin-bottom: 50px;
     font-size: 76px;
-    color: aqua;
+    color:rgb(253, 181, 38, 0.618)
 }
 
 .home{
+  background-color: white;
   /* background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmC0PLUpbdWo5nhQs-uEFqsp1M62Es0CNR9A&usqp=CAU") ; */
     display: flex;
     flex-direction: column;
@@ -23,15 +24,14 @@ code {
     background-attachment: fixed;
     background-size:cover;
     background-repeat: no-repeat;
-    height: 1800px;
+    /* height: 1800px; */
     /* width: 2000px; */ 
     padding: 4px;
-  background-image: url("https://www.xtrafondos.com/descargar.php?id=7962&resolucion=2560x1440");
   background-position: center center;
   background-attachment: fixed;
   background-size:cover;
   background-repeat: no-repeat;
-  height: 1800px;
+  /* height: 1800px; */
   /* width: 2000px; */
   padding: 4px;
 
@@ -41,7 +41,12 @@ code {
   }; */
   .home:hover{
     filter: saturate(180%);
+    
+
   }
+  .Buton-Next{
+    height:200px; width:200px
+  }
+/* .gif-home{
 
-
-
+} */
