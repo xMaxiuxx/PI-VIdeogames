@@ -28,7 +28,7 @@ function Create() {
       genre2: "",
   })
 
-  const handleChange = (event)=>{
+  const handleFChange = (event)=>{
       const property = event.target.name;
       const value = event.target.value;
 
@@ -63,15 +63,15 @@ function Create() {
       <form className='form' onSubmit={handleSubmit}>
         <div>
             <label>Name</label>                                         
-            <input type="text" value={form.name} onChange={handleChange} name="name" placeholder='Name'/>
+            <input type="text" value={form.name} onChange={handleFChange} name="name" placeholder='Name'/>
         </div>
         <div>
             <label>Description</label>
-            <input type="text" value={form.description} onChange={handleChange} name="description" placeholder='Description'/>
+            <input type="text" value={form.description} onChange={handleFChange} name="description" placeholder='Description'/>
         </div>
         <div>
             <label>Platforms</label>
-            <select name="platforms" value={form.platforms} onChange={handleChange} >
+            <select name="platforms" value={form.platforms} onChange={handleFChange} >
               <option value='Android'>Android</option>
               <option value='Linux'>Linux</option>
               <option value='macOS'>macOS</option>
@@ -87,20 +87,20 @@ function Create() {
 
         <div>
             <label>Image</label>
-            <input type="text" value={form.image} onChange={handleChange} name="image" placeholder='Insert image url'/>
+            <input type="text" value={form.image} onChange={handleFChange} name="image" placeholder='Insert image url'/>
         </div>
 
         <div>
             <label>Release Date</label>
-           <input type="text" value={form.releaseDate} onChange={handleChange} name="releaseDate" placeholder='Release Date'/>
+           <input type="text" value={form.releaseDate} onChange={handleFChange} name="releaseDate" placeholder='Release Date'/>
         </div>  
         <div>
             <label>Rating</label>
-            <input type="text" value={form.rating} onChange={handleChange} name="rating" placeholder='Rating'/>
+            <input type="text" value={form.rating} onChange={handleFChange} name="rating" placeholder='Rating'/>
         </div>
         <div>
             <label>First Genre</label>
-            <select name="genre1" value={form.genre1} onChange={handleChange} >
+            <select name="genre1" value={form.genre1} onChange={handleFChange} >
               <option value='select'>Select one genre</option>
               {genres?.map(genre=>
                 <option value={genre}>{genre}</option>
@@ -109,7 +109,7 @@ function Create() {
         </div>
         <div>
             <label>Second Genre</label>
-            <select name="genre2" value={form.genre2} onChange={handleChange} >
+            <select name="genre2" value={form.genre2} onChange={handleFChange} >
               <option value='select'>Select one genre</option>
               {genres?.map(genre=>
                 <option value={genre}>{genre}</option>

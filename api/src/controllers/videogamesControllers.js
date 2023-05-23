@@ -4,6 +4,9 @@ const{ Videogame, Genre} = require("../db");
 const axios = require("axios");
 const {Sequelize} = require("sequelize");
 
+var CACHE = {}
+
+
 //!---------------------------------Crea los videogames----------------------
 const createVideogames = async  (id, name, description, platforms, image, releaseDate, rating, genres) => {
     console.log(genres)
@@ -93,10 +96,17 @@ const getAllVideogames = async () =>{
     var apiVideogamesRaw = {results:[]}
     var url = `https://api.rawg.io/api/games?key=${API_KEY}`
     for(let i=0; i<=4; i++){
-        const response = ( await axios.get(url)).data
+        var response
+        if(`generalUrl${i}` in CACHE === true){
+            response = CACHE[`generalUrl${i}`]
+        }else{
+            response = ( await axios.get(url)).data
+            CACHE[`generalUrl${i}`] = response
+        }
         url = response.next
         apiVideogamesRaw.results = apiVideogamesRaw.results.concat(response.results)
     }
+    console.log(apiVideogamesRaw.results.length)
     return mapResponse(databaseVideogames, apiVideogamesRaw)
 };
 
