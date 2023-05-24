@@ -86,7 +86,7 @@ function Home() {
   if (isLoading) {
     return (<div className='home'>
 
-              { <img className='gif-home' src="https://venturebeat.com/wp-content/uploads/2014/10/loading_desktop_by_brianmccumber-d41z4h6.gif?fit=400%2C225&strip=all" /> }
+              { <img className='gif-home' src="/images/loading.gif" /> }
 
 
             </div>
