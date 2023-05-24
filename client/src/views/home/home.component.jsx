@@ -10,18 +10,29 @@ import { useState } from 'react';
 function Home() {
   const GAMES_PER_PAGE = 20;
   const dispatch = useDispatch()
+  
+  var allVideogames = useSelector((state)=>state.allVideogames);
   useEffect(()=>{
     dispatch(getVideogames());
-  },[])
+  },[dispatch])
   
-
-  //TODO change this
-  var allVideogames = useSelector((state)=>state.allVideogames);
   const isLoading = useSelector((state)=>state.isLoading);
 
   const [games ,setGames] = useState([...allVideogames].splice(0,GAMES_PER_PAGE))
   const [currentPage,setCurrentPage]= useState(0);
   const [searchString, setSearchString] = useState("");    
+
+  useEffect(() => {
+    if (allVideogames.length > 0) {
+      setGames(allVideogames.slice(0, GAMES_PER_PAGE));
+    }
+  }, [allVideogames]);
+
+  const updateGames = (init) => {
+    const updatedGames = [...allVideogames].splice(init, GAMES_PER_PAGE);
+    setGames(updatedGames);
+  };
+
 
   function handleChange(event){
     event.preventDefault();
@@ -30,7 +41,8 @@ function Home() {
   function handleSubmit(event){
     event.preventDefault();
     dispatch(getVideogamesByName(searchString))
-    setGames([...allVideogames].splice(0,GAMES_PER_PAGE))
+    //setGames([...allVideogames].splice(0,GAMES_PER_PAGE))
+    updateGames(0);
   }
   
   //!--------------------------------------------------- Paginado-----------------------
@@ -39,7 +51,8 @@ function Home() {
     const nextPage = currentPage +1 ;
     const firstGame = nextPage * GAMES_PER_PAGE;
     if (firstGame >= totalVideogames) return;
-    setGames([...allVideogames].splice(firstGame,GAMES_PER_PAGE));
+    //setGames([...allVideogames].splice(firstGame,GAMES_PER_PAGE));
+    updateGames(firstGame);
     setCurrentPage(nextPage);
   }
 
@@ -47,7 +60,8 @@ function Home() {
     const prevPage = currentPage -1;
     if (prevPage < 0)return;
     const firstGame = prevPage * GAMES_PER_PAGE;
-    setGames([...allVideogames].splice(firstGame,GAMES_PER_PAGE));
+    //setGames([...allVideogames].splice(firstGame,GAMES_PER_PAGE));
+    updateGames(firstGame);
     setCurrentPage(prevPage);
   }
 
@@ -60,7 +74,8 @@ function Home() {
         if (nameA < nameB){ return 1; }
         return 0
       })
-    setGames(allVideogames.splice(0,GAMES_PER_PAGE));
+    //setGames(allVideogames.splice(0,GAMES_PER_PAGE));
+    updateGames(0);
     setCurrentPage(0);
   }
 
@@ -72,7 +87,8 @@ function Home() {
         if (nameA > nameB){ return 1; }
         return 0
       })
-    setGames(allVideogames.splice(0, GAMES_PER_PAGE));
+    //setGames(allVideogames.splice(0, GAMES_PER_PAGE));
+    updateGames(0);
     setCurrentPage(0);
   }
 
