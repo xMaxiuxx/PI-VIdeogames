@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector, connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getVideogames, getVideogamesByName } from '../../redux/actions';
 
 import Cards from '../../components/cards/cards.component';
@@ -12,9 +12,11 @@ function Home() {
   const dispatch = useDispatch()
   useEffect(()=>{
     dispatch(getVideogames());
-  },[dispatch])
+  },[])
+  
 
-  const allVideogames = useSelector((state)=>state.allVideogames);
+  //TODO change this
+  var allVideogames = useSelector((state)=>state.allVideogames);
   const isLoading = useSelector((state)=>state.isLoading);
 
   const [games ,setGames] = useState([...allVideogames].splice(0,GAMES_PER_PAGE))

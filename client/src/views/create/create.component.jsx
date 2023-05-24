@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 
 function Create() {
 
+  const [disableSubmit, setDisableSubmit] = useState(true)
+  
   const [form, setForm] = useState({
       name: "",
       description: "",
@@ -18,29 +20,72 @@ function Create() {
   })
 
   const [errors, setErrors] = useState({
-      name: "",
-      description: "",
-      platforms: "",
-      image: "",
-      releaseDate: "",
-      rating: "",
-      genre1: "",
-      genre2: "",
+      name: "Empty name",
+      description: "Empty description",
+      platforms: "Empty platforms",
+      image: "Empty image",
+      releaseDate: "Empty date",
+      rating: "Empty rating",
+      genre1: "Empty genre",
+      genre2: "Empty genre",
   })
 
   const handleFChange = (event)=>{
-      const property = event.target.name;
-      const value = event.target.value;
+    const property = event.target.name;
+    const value = event.target.value;
 
-      validate({...form, [property]:value})
-      setForm({...form,[property]:value })
-  }
-  const validate=(form)=>{
-    //if(!/^\w+([\.-]?\w+)@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form.mail))
-    if (errors){
+    setForm({...form, [property]:value })
 
+    if (validate(property, value)){
+      console.log(errors)
+      setDisableSubmit(false)
+    }else{
+      setDisableSubmit(true)
     }
-    setErrors()
+  }
+
+  const updateErrors = (property, msg) => {
+    const updatedErrors = { ...errors, [property]: msg };
+    setErrors(updatedErrors);
+    // Aquí puedes acceder a errors inmediatamente después de llamar a setErrors
+    console.log(errors);
+  };
+  
+  useEffect(() => {
+    console.log(errors); // Accede al estado actualizado inmediatamente
+  }, [errors]);
+  
+  //Validate registra en errors las descipciones de las validaciones y ademas devuelve si ya está todo válido o no.
+  const validate=(property, value)=>{
+    var valid = true
+
+    if ( ['name', 'description', 'platforms', 'image', 'releaseDate'].includes(property) && 
+          (value?.length > 255 || value?.length === 0 || value === "")){
+      //setErrors({...errors, [property]: "Invalid length" })
+      updateErrors(property, "Invalid length");
+    }else{
+      updateErrors(property, "");
+      //setErrors({...errors, [property]: "" })
+    }
+    if (property === 'name' && value?.length > 30){
+      setErrors({...errors, [property]: "Invalid length" })
+    }else{
+      //setErrors({...errors, [property]:"" })
+      updateErrors(property, "");
+    }
+
+    if("rating" === property && (Number(value)>5 || Number(value)<0 )){
+      setErrors({...errors, [property]: "Invalid rating - invalid number" })
+    }else{
+      setErrors({...errors, [property]: "" })
+    }
+
+    Object.keys(errors).forEach((field) => {if(!["genre1", "genre2"].includes(field) && errors[field] !== ""){valid=false}})
+    if(errors.genre1 !== "" && errors.genre2 !== ""){valid=false}
+
+    console.log(valid)
+    console.log(errors)
+    return valid
   }
 
   const dispatch = useDispatch();
@@ -116,7 +161,7 @@ function Create() {
               )}
             </select>
         </div>
-        <button type="submit">CREATE GAME</button>
+        <button type="submit" disabled={disableSubmit}>CREATE GAME</button>
       </form>
     </div>
   );
