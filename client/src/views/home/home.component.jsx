@@ -85,10 +85,7 @@ function Home() {
 
   if (isLoading) {
     return (<div className='home'>
-
-              { <img className='gif-home' src="/images/loading.gif" /> }
-
-
+              { <img className='gif-home' src="/images/loading.gif" alt=""/> }
             </div>
       );
   }

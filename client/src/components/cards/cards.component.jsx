@@ -6,7 +6,7 @@ function Cards({allVideogames}) {
   if (videogames?.length>0){
     return (
       <div className="cards-container">
-          {videogames.map(videogame=> <Card videogame={videogame}/>)}
+          {videogames.map(videogame=> <Card videogame={videogame} key={videogame.id}/>)}
       </div>
     );
   }
