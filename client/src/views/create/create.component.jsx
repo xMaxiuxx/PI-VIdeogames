@@ -63,56 +63,56 @@ function Create() {
       <form className='form' onSubmit={handleSubmit}>
         <div>
             <label>Name</label>                                         
-            <input type="text" value={form.name} onChange={handleFChange} name="name" placeholder='Name'/>
+            <input type="text" value={form.name} onChange={handleFChange} name="name" placeholder='Name' key='name'/>
         </div>
         <div>
             <label>Description</label>
-            <input type="text" value={form.description} onChange={handleFChange} name="description" placeholder='Description'/>
+            <input type="text" value={form.description} onChange={handleFChange} name="description" placeholder='Description' key='description'/>
         </div>
         <div>
             <label>Platforms</label>
-            <select name="platforms" value={form.platforms} onChange={handleFChange} >
-              <option value='Android'>Android</option>
-              <option value='Linux'>Linux</option>
-              <option value='macOS'>macOS</option>
-              <option value='PC'>PC</option>
-              <option value='PlayStation 3'>PlayStation 3</option>
-              <option value='PlayStation 4'>PlayStation 4</option>
-              <option value='PlayStation 5'>PlayStation 5</option>
-              <option value='Xbox 360'>Xbox 360</option>
-              <option value='Xbox One'>Xbox One</option>
-              <option value='Xbox Series S/X'>Xbox Series S/X</option>
+            <select name="platforms" value={form.platforms} onChange={handleFChange} key='platforms'>
+              <option value='Android' key='Android'>Android</option>
+              <option value='Linux' key='Linux'>Linux</option>
+              <option value='macOS' key='macOS'>macOS</option>
+              <option value='PC' key='PC'>PC</option>
+              <option value='PlayStation 3' key='PlayStation 3'>PlayStation 3</option>
+              <option value='PlayStation 4' key='PlayStation 4'>PlayStation 4</option>
+              <option value='PlayStation 5' key='PlayStation 5'>PlayStation 5</option>
+              <option value='Xbox 360' key='Xbox 360'>Xbox 360</option>
+              <option value='Xbox One' key='Xbox One'>Xbox One</option>
+              <option value='Xbox Series S/X' key='Xbox Series S/X'>Xbox Series S/X</option>
             </select>
         </div>
 
         <div>
             <label>Image</label>
-            <input type="text" value={form.image} onChange={handleFChange} name="image" placeholder='Insert image url'/>
+            <input type="text" value={form.image} onChange={handleFChange} name="image" placeholder='Insert image url' key='image'/>
         </div>
 
         <div>
             <label>Release Date</label>
-           <input type="text" value={form.releaseDate} onChange={handleFChange} name="releaseDate" placeholder='Release Date'/>
+           <input type="text" value={form.releaseDate} onChange={handleFChange} name="releaseDate" placeholder='Release Date' key='releaseDate'/>
         </div>  
         <div>
             <label>Rating</label>
-            <input type="text" value={form.rating} onChange={handleFChange} name="rating" placeholder='Rating'/>
+            <input type="text" value={form.rating} onChange={handleFChange} name="rating" placeholder='Rating' key='rating'/>
         </div>
         <div>
             <label>First Genre</label>
-            <select name="genre1" value={form.genre1} onChange={handleFChange} >
+            <select name="genre1" value={form.genre1} onChange={handleFChange} key='genre1'>
               <option value='select'>Select one genre</option>
               {genres?.map(genre=>
-                <option value={genre}>{genre}</option>
+                <option value={genre} key={genre}>{genre}</option>
               )}
             </select>
         </div>
         <div>
             <label>Second Genre</label>
-            <select name="genre2" value={form.genre2} onChange={handleFChange} >
+            <select name="genre2" value={form.genre2} onChange={handleFChange} key='genre2'>
               <option value='select'>Select one genre</option>
               {genres?.map(genre=>
-                <option value={genre}>{genre}</option>
+                <option value={genre} key={genre}>{genre}</option>
               )}
             </select>
         </div>

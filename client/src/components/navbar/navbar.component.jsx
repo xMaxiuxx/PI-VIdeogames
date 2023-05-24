@@ -6,7 +6,7 @@ function Navbar({handleChange, handleSubmit}) {
     <div className='search-box'>
       <form >
         <input placeholder='Search' type="search" onChange={handleChange}/>
-        <button onClick={handleSubmit} type="submit">Search</button>
+        <button onClick={handleSubmit}>Search</button>
       </form>
       <Link className='Home-Cave' to="/home">HOME CAVE</Link>
       <Link  className='Create-Game ' to="/create">CREATE GAME</Link>
