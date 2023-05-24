@@ -18,10 +18,10 @@ function Card({videogame}) {
 
   return (
     <div className="card-container">
-      <Link to={`home/${videogame.id}`}><p>{videogame.name} </p></Link>
+      <Link className="card-link" to={`home/${videogame.id}`}><p>{videogame.name} </p></Link>
       <img src={videogame.image} alt="" />
-      <h2 className="genres" >Ꮆ乇几尺乇丂 {videogame.genres} </h2>
-      <div>RATING {stars}  </div>
+      <h2 className="genres" >𝔾𝔼ℕℝ𝔼𝕊 {videogame.genres} </h2>
+      <div className="rating">RATING {stars}  </div>
     </div>
   );
 }

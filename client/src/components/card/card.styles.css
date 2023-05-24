@@ -13,6 +13,7 @@
     text-decoration: none;
     color: rgb(253, 181, 38, 0.618);
     font-size: 18px;
+
 }
 img{
     width: 100%;
@@ -25,8 +26,26 @@ img{
 
 .card-container:hover{
     transform: scale(1.05);
+    background-color: rgba(253, 181, 38, 0.225);
 }
 .genres{
-    text-align:right
+    text-align:center;
+    color:rgba(11, 174, 149, 0.406);
     
+}
+.genres:hover{
+    color: aqua;
+}
+.card-link{
+    color: #c08b22;
+    text-decoration: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+
+}
+.card-link:hover{
+    color: rgb(255, 0, 0);
+}
+
+.rating{
+    color:rgb(1, 222, 60);
 }

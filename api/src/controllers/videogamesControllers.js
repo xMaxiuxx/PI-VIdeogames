@@ -24,7 +24,8 @@ const createVideogames = async  (id, name, description, platforms, image, releas
     
     //TODO: Ver como no tener que volver a acceder a la DB
     const getVideogame = await Videogame.findByPk(videogame.id, {include:[{model: Genre, as:"genres",through:{attributes:[],}},],})
-    return mapResponseFromDatabase(getVideogame);
+    // alert("Oops! Something went wrong.");
+    return mapResponseFromDatabase(getVideogame); 
 }    
 
 //!--------------------------------------------TRAE todos los videogames por id----------------------------

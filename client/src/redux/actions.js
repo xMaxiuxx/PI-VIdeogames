@@ -6,6 +6,7 @@ export const GET_BY_ID = "GET_BY_ID"
 export const POST_CREATE = "POST_CREATE"
 export const GET_GENRES = "GET_GENRES"
 
+
 export function getVideogames(){
     return async function(dispatch){
         const response = (await axios("http://localhost:3001/videogames")).data;

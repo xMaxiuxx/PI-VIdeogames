@@ -15,12 +15,16 @@ function Detail() {
 
   var platforms = []
   videogameById.platforms?.forEach(platform=>{
-      if (platform?.toLowerCase().includes("playstation") && !platforms.includes("/images/playstation.png")){
+      if (platform?.toLowerCase().includes("playstation") && !platforms.includes("/images/Playstation-logo.png")){
         platforms.push("/images/playstation.png")
       }
-      if (platform?.toLowerCase().includes("xbox") && !platforms.includes("/images/xbox.jpeg")){
+      if (platform?.toLowerCase().includes("xbox") && !platforms.includes("/images/xbox-logo.png")){
         platforms.push("/images/xbox.jpeg")
       }
+      if (platform?.toLowerCase().includes("pc") && !platforms.includes("/images/pc-logo.jpeg")){
+        platforms.push("/images/xbox.jpeg")
+      }
+      
     } 
   )
 
