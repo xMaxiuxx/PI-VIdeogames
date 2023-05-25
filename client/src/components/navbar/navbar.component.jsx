@@ -5,8 +5,8 @@ function Navbar({handleChange, handleSubmit}) {
   return (
     <div className='search-box'>
       <form >
-        <input placeholder='Search' type="search" onChange={handleChange}/>
-        <button onClick={handleSubmit}>Search</button>
+        <input className='Search-imput' placeholder='Search Games' type="search" onChange={handleChange}/>
+        <button className='Button-Search' onClick={handleSubmit}>Search</button>
       </form>
       
       <Link  className='Create-Game ' to="/create">CREATE YOUR GAME</Link>

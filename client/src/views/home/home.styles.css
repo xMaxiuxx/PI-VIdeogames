@@ -102,8 +102,10 @@ code {
     .Buton-Asc{
 
       position: absolute;
-      top: 1.8%;
-      left: 70%;
+      top: 1%;
+      left: 56.5%;
+      font-size: 85%;
+      background-color: gray;
 
     }
 
@@ -112,7 +114,16 @@ code {
 
     .Buton-Desc{
       position: absolute;
-      top: 1.8%;
-      right: 40%;
+      top: 1%;
+      right: 38.5%;
+      font-size: 85%;
+      background-color: gray;
+    }
 
+    .Filtro-api-db{
+      position: absolute;
+      top: 1%;
+      right: 30%;
+      font-size: 102%;
+      background-color:  gray ;
     }

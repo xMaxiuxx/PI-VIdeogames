@@ -124,11 +124,11 @@ function Home() {
       <Cards allVideogames={games}/>
       <button className="Buton-Prev" onClick={prevHandler} > ⇦ </button>
       <button className="Buton-Next" onClick={nextHandler} > ⇨ </button>
-      <button className="Buton-Asc" onClick={orderAsc} >Order Asc</button>
-      <button className="Buton-Desc" onClick={orderDesc} >Order Desc</button>
+      <button className="Buton-Asc" onClick={orderAsc} > A/Z</button>
+      <button className="Buton-Desc" onClick={orderDesc} > Z/A </button>
       <div>
             <label> <h1> FILTRO </h1></label>
-            <select  onChange={filterByApiDB}> 
+            <select className='Filtro-api-db'  onChange={filterByApiDB}> 
               <option value = "All"> <h1> All Videgomas</h1> </option> 
               <option value = "false"> <h1> API</h1> </option> 
               <option value = "true" > <h1> BDD</h1> </option> 

@@ -33,3 +33,19 @@
     background-color: gray;
     border-radius: 20%;
 }
+
+.Search-imput{
+    position: absolute;
+    top: 1%;
+    right: 20%;
+    opacity: 50%;
+    background-color: gold;
+
+}
+.Button-Search{
+    position: absolute;
+    top: 1%;
+    right: 16%;
+    opacity: 70%;
+    background-color: gold;
+}

@@ -42,7 +42,7 @@ function Detail() {
     
     <div className='detail-container'>
       <h2>{videogameById.name} </h2>
-      <img src={videogameById.image} alt="" />
+      <img className='imagen-id' src={videogameById.image} alt="" />
       <p> 𝐑𝐄𝐋𝐄𝐀𝐒𝐄𝐃 {videogameById.releaseDate} </p>
       {/* <p>𝐏𝐋𝐀𝐓𝐅𝐎𝐑𝐌𝐒 ⚔️⚔️⚔️ {videogameById.platforms} </p> */}
       <div >𝐏𝐋𝐀𝐓𝐅𝐎𝐑𝐌𝐒
