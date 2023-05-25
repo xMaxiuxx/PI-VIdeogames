@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVideogames, getVideogamesByName } from '../../redux/actions';
-
+import { Link } from 'react-router-dom';
 import Cards from '../../components/cards/cards.component';
 import Navbar from '../../components/navbar/navbar.component';
 import './home.styles.css';
@@ -122,10 +122,10 @@ function Home() {
       <h1 className='home-title'>Cave Of Games</h1>
       <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
       <Cards allVideogames={games}/>
-      <button className="Buton-Prev" onClick={prevHandler} >Prev</button>
-      <button className="Buton-Next" onClick={nextHandler} >Next</button>
+      <button className="Buton-Prev" onClick={prevHandler} > ⇦ </button>
+      <button className="Buton-Next" onClick={nextHandler} > ⇨ </button>
       <button className="Buton-Asc" onClick={orderAsc} >Order Asc</button>
-      <button className="buton-Desc" onClick={orderDesc} >Order Desc</button>
+      <button className="Buton-Desc" onClick={orderDesc} >Order Desc</button>
       <div>
             <label> <h1> FILTRO </h1></label>
             <select  onChange={filterByApiDB}> 
@@ -133,8 +133,9 @@ function Home() {
               <option value = "false"> <h1> API</h1> </option> 
               <option value = "true" > <h1> BDD</h1> </option> 
             </select> 
+            <top> <h1> <Link className='buton-link-home' to="/"> Welcome  </Link></h1> </top>
         </div>
-
+      
     </div>
   );
 }

@@ -11,13 +11,13 @@ code {
     margin-top: 75px;
     margin-bottom: 50px;
     font-size: 76px;
-    color:rgb(253, 181, 38, 0.618)
-
+    color:rgba(1, 0, 0, 0.555);
+    font-family: fantasy;
 }
 .home-title:hover{
-  border-radius: 20px;
-  color: gray;
-  background-color: rgb(253, 181, 38, 0.618);
+
+  color: rgb(253, 181, 38, 0.618);
+  font-family: fantasy;
   
 }
 
@@ -49,11 +49,70 @@ code {
   .home:hover{
     filter: saturate(180%);
     
-
+    
   }
   .Buton-Next{
-    height:200px; width:200px
+    position:absolute;
+    top: 15%;
+    right: 1%;
+    font-size: 300%;
+    background-color: rgb(3, 4, 1);
+    opacity: 50%;
+    color:gray
+    
   }
-/* .gif-home{
+.Buton-Next:hover{
+  color:gold;
+}
 
-} */
+  .Buton-Prev{
+    position:absolute;
+    top: 15%;
+    left: 1%;
+    font-size: 300%;
+    background-color: rgb(3, 4, 1);
+    opacity: 50%;
+    color:gray
+  }
+
+.Buton-Prev:hover{
+  color:gold;
+}
+
+
+  .buton-link-home{
+    /* color:rgb(253, 181, 38, 0  .618); */
+    color: black;
+    text-decoration: none;
+    position: absolute;
+    top: 1.5%;
+    left: 1%;
+    opacity: 70%;
+    font-family: fantasy;
+
+
+  }
+
+  .buton-link-home:hover{
+    color: rgba(253, 181, 38, 0.91);
+    text-decoration: none;
+    font-size: 35px;
+    } 
+
+    .Buton-Asc{
+
+      position: absolute;
+      top: 1.8%;
+      left: 70%;
+
+    }
+
+
+
+
+    .Buton-Desc{
+      position: absolute;
+      top: 1.8%;
+      right: 40%;
+
+    }

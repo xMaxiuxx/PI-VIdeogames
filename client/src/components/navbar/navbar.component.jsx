@@ -8,8 +8,8 @@ function Navbar({handleChange, handleSubmit}) {
         <input placeholder='Search' type="search" onChange={handleChange}/>
         <button onClick={handleSubmit}>Search</button>
       </form>
-      <Link className='Home-Cave' to="/home">HOME CAVE</Link>
-      <Link  className='Create-Game ' to="/create">CREATE GAME</Link>
+      
+      <Link  className='Create-Game ' to="/create">CREATE YOUR GAME</Link>
     </div>
   );
 }

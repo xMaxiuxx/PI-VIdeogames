@@ -25,16 +25,21 @@
     background-repeat:no-repeat; 
     background-size: cover;
 }
-/* img{
-    width: 100%;
-    border-radius: 30px;
-}  */
-/* .head_card{
-    display: flex; 
-    justify-content: space-between;
-    
-}  */
 
-/* .card-container:hover{
-    transform: scale(1.05);
-} */
+.buton-link-c{
+    position: absolute;
+    top: 70%;
+    left: 30%;
+    opacity: 100%;
+    text-decoration: none;
+    color:black;
+}
+
+.buton-link-c:hover{
+    color: rgba(253, 181, 38, 0.618);
+text-decoration: none;
+background-color: rgba(0, 0, 0, 0.724);
+border-radius: 20%;
+}
+
+

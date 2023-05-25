@@ -8,8 +8,18 @@
 
 }
 .Create-Game{
-    color: gray;
+    color: rgb(1, 0, 0);
     text-decoration: none;
+    position: absolute;
+    top: 1.8%;
+    right: 1%;
+    opacity: 70%;
+    font-family: fantasy;
+}
+.Create-Game:hover{
+    color: rgba(253, 181, 38, 0.91);
+    text-decoration: none;
+    font-size: 35px;
 }
 
 .Home-Cave{

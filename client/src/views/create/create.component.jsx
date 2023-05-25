@@ -3,7 +3,7 @@ import { useState } from "react";
 import { getGenres, postVideogame } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 function Create() {
 
   const [disableSubmit, setDisableSubmit] = useState(true)
@@ -161,6 +161,7 @@ function Create() {
               )}
             </select>
         </div>
+         <h1> <Link className='buton-link-c' to="/home"> Back to Cave of Games</Link></h1> 
         <button type="submit" disabled={disableSubmit}>CREATE GAME</button>
       </form>
     </div>

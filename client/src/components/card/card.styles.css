@@ -29,9 +29,10 @@ img{
     background-color: rgba(253, 181, 38, 0.225);
 }
 .genres{
-    text-align:center;
+    text-align:right;
     color:rgba(11, 174, 149, 0.406);
-    
+
+                                                
 }
 .genres:hover{
     color: aqua;
