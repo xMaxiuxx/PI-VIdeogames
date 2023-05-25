@@ -37,7 +37,7 @@ function Create() {
     setForm({...form, [property]:value })
 
     if (validate(property, value)){
-      console.log(errors)
+
       setDisableSubmit(false)
     }else{
       setDisableSubmit(true)
@@ -61,16 +61,13 @@ function Create() {
 
     if ( ['name', 'description', 'platforms', 'image', 'releaseDate'].includes(property) && 
           (value?.length > 255 || value?.length === 0 || value === "")){
-      //setErrors({...errors, [property]: "Invalid length" })
       updateErrors(property, "Invalid length");
     }else{
       updateErrors(property, "");
-      //setErrors({...errors, [property]: "" })
     }
     if (property === 'name' && value?.length > 30){
       setErrors({...errors, [property]: "Invalid length" })
     }else{
-      //setErrors({...errors, [property]:"" })
       updateErrors(property, "");
     }
 
@@ -83,8 +80,6 @@ function Create() {
     Object.keys(errors).forEach((field) => {if(!["genre1", "genre2"].includes(field) && errors[field] !== ""){valid=false}})
     if(errors.genre1 !== "" && errors.genre2 !== ""){valid=false}
 
-    console.log(valid)
-    console.log(errors)
     return valid
   }
 
@@ -93,8 +88,8 @@ function Create() {
 
   function handleSubmit(event){
     event.preventDefault();
-    dispatch(postVideogame(form))
-    console.log(postVidState)
+    dispatch(postVideogame(form));
+    alert (`Juego Creado: ${postVidState?.id}`);
   }
 
   const genres = useSelector((state)=>state.allGenres);
