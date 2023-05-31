@@ -26,8 +26,8 @@ function Create() {
       image: "Empty image",
       releaseDate: "Empty date",
       rating: "Empty rating",
-      genre1: "Empty genre",
-      genre2: "Empty genre",
+      genre1: "Invalid genre",
+      genre2: "Invalid genre",
   })
 
   const handleFChange = (event)=>{
@@ -57,24 +57,28 @@ function Create() {
   
   //Validate registra en errors las descipciones de las validaciones y ademas devuelve si ya está todo válido o no.
   const validate=(property, value)=>{
+    console.log(property)
+    console.log(value)
+    console.log(value.length)
     var valid = true
 
-    if ( ['name', 'description', 'platforms', 'image', 'releaseDate'].includes(property) && 
+    if ( ['name', 'description', 'platforms', 'image', 'releaseDate','genre1','genre2'].includes(property) && 
           (value?.length > 255 || value?.length === 0 || value === "")){
-      updateErrors(property, "Invalid length");
+       updateErrors(property, "Invalid length");
     }else{
       updateErrors(property, "");
     }
-    if (property === 'name' && value?.length > 30){
-      setErrors({...errors, [property]: "Invalid length" })
-    }else{
-      updateErrors(property, "");
+    
+    if (property === 'name' && (value?.length > 30)){
+      updateErrors(property, "Invalid length");
     }
 
-    if("rating" === property && (Number(value)>5 || Number(value)<0 )){
-      setErrors({...errors, [property]: "Invalid rating - invalid number" })
-    }else{
-      setErrors({...errors, [property]: "" })
+    if("rating" === property){
+      if  ( value !== "" && Number(value)<=5 && Number(value)>=0  ){
+        updateErrors(property, "");
+      }else{
+        updateErrors(property, "Invalid rating - invalid number");
+      }  
     }
 
     Object.keys(errors).forEach((field) => {if(!["genre1", "genre2"].includes(field) && errors[field] !== ""){valid=false}})
@@ -104,10 +108,12 @@ function Create() {
         <div>
             <label>Name</label>                                         
             <input type="text" value={form.name} onChange={handleFChange} name="name" placeholder='Name' key='name'/>
+            <label>{errors.name}</label>
         </div>
         <div>
             <label>Description</label>
             <input type="text" value={form.description} onChange={handleFChange} name="description" placeholder='Description' key='description'/>
+            <label>{errors.description}</label>
         </div>
         <div>
             <label>Platforms</label>
@@ -123,38 +129,44 @@ function Create() {
               <option value='Xbox One' key='Xbox One'>Xbox One</option>
               <option value='Xbox Series S/X' key='Xbox Series S/X'>Xbox Series S/X</option>
             </select>
+            <label>{errors.platforms}</label>
         </div>
 
         <div>
             <label>Image</label>
             <input type="text" value={form.image} onChange={handleFChange} name="image" placeholder='Insert image url' key='image'/>
+            <label>{errors.image}</label>
         </div>
 
         <div>
             <label>Release Date</label>
-           <input type="text" value={form.releaseDate} onChange={handleFChange} name="releaseDate" placeholder='Release Date' key='releaseDate'/>
+           <input type="date" value={form.releaseDate} onChange={handleFChange} name="releaseDate" placeholder='Release Date' key='releaseDate'/>
+           <label>{errors.releaseDate}</label>
         </div>  
         <div>
             <label>Rating</label>
             <input type="text" value={form.rating} onChange={handleFChange} name="rating" placeholder='Rating' key='rating'/>
+            <label>{errors.rating}</label>
         </div>
         <div>
             <label>First Genre</label>
             <select name="genre1" value={form.genre1} onChange={handleFChange} key='genre1'>
-              <option value='select'>Select one genre</option>
+              <option value=''>Select one genre</option>
               {genres?.map(genre=>
                 <option value={genre} key={genre}>{genre}</option>
               )}
             </select>
+              <label>{errors.genre1}</label>
         </div>
         <div>
             <label>Second Genre</label>
             <select name="genre2" value={form.genre2} onChange={handleFChange} key='genre2'>
-              <option value='select'>Select one genre</option>
+              <option value=''>Select one genre</option>
               {genres?.map(genre=>
                 <option value={genre} key={genre}>{genre}</option>
               )}
             </select>
+            <label>{errors.genre2}</label>
         </div>
          <h1> <Link className='buton-link-c' to="/home"> Back to Cave of Games</Link></h1> 
         <button type="submit" disabled={disableSubmit}>CREATE GAME</button>

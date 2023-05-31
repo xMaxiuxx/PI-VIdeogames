@@ -1,7 +1,7 @@
-import { GET_VIDEOGAMES, GET_BY_NAME, GET_BY_ID, POST_CREATE, GET_GENRES } from "./actions"
+import { GET_VIDEOGAMES, GET_BY_NAME, GET_BY_ID, POST_CREATE, GET_GENRES, UPDATE_ALLVIDEOGAMES, upDateAllvideogames } from "./actions"
 
 
-let initialState = {allVideogames: [], allVideogamesOriginal: [], pageVideogames: [],
+let initialState = {allVideogames: [], allVideogamesOriginal: [], 
         videogameById: {}, videogameCreated: {}, allGenres: [], 
         isLoading: true}
 
@@ -17,6 +17,8 @@ function rootReducer(state = initialState, action){
             return {...state, videogameCreated:action.payload}
         case GET_GENRES:
             return {...state, allGenres:action.payload}
+        case UPDATE_ALLVIDEOGAMES:
+            return{...state,allVideogames:action.payload}
         default:
             return {...state}
     }

@@ -5,6 +5,7 @@ export const GET_BY_NAME = "GET_BY_NAME"
 export const GET_BY_ID = "GET_BY_ID"
 export const POST_CREATE = "POST_CREATE"
 export const GET_GENRES = "GET_GENRES"
+export const UPDATE_ALLVIDEOGAMES="UPDATE_ALLVIDEOGAMES"
 
 
 export function getVideogames(){
@@ -56,4 +57,13 @@ export function getGenres(){
             payload: response
         })
     };
+}
+export function upDateAllvideogames(videogames){
+    return function (dispatch){
+     return dispatch (  {
+            type: "UPDATE_ALLVIDEOGAMES",
+            payload:videogames
+        })
+    }
+   
 }

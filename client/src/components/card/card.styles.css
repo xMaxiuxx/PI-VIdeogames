@@ -30,12 +30,12 @@ img{
 }
 .genres{
     text-align:right;
-    color:rgba(11, 174, 149, 0.406);
-
+    color:rgba(1, 222, 60);
+    font-family: fantasy;
                                                 
 }
 .genres:hover{
-    color: aqua;
+    color: rgb(255, 0, 0);
 }
 .card-link{
     color: #c08b22;

@@ -41,16 +41,17 @@ code {
   /* height: 1800px; */
   /* width: 2000px; */
   padding: 4px;
+  filter: saturate(180%);
   
 } 
 /* .home:hover {border-radius:60%;
   filter: sepia(60%);
   }; */
-  .home:hover{
+  /* .home:hover{
     filter: saturate(180%);
     
     
-  }
+  } */
   .Buton-Next{
     position:absolute;
     top: 15%;
@@ -124,6 +125,29 @@ code {
       position: absolute;
       top: 1%;
       right: 30%;
+      font-size: 102%;
+      background-color:  gray ;
+    }
+
+    .Select-Genre{
+      position: absolute;
+      top: 2%;
+      right: 16%;
+      font-size: 102%;
+      background-color:  gray ;
+    }
+    .Buton-Asc-rating{
+      position: absolute;
+      top: 3%;
+      right: 20%;
+      font-size: 102%;
+      background-color:  gray ;
+    }
+
+    .Buton-Desc-rating{
+      position: absolute;
+      top: 3%;
+      right: 16%;
       font-size: 102%;
       background-color:  gray ;
     }
