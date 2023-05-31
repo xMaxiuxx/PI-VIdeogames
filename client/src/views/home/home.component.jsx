@@ -163,8 +163,6 @@ function Home() {
     updateGames(0);
     setCurrentPage(0);
   }
-  
-  
   //!--------------------------------------------------- Sort By Name Asc/Desc -----------------------
 
   const orderAsc = ()=>{
@@ -213,8 +211,7 @@ function Home() {
 
       <button className="Buton-Asc-rating" onClick={ratingAsc} > ⭐0/5 </button>
       <button className="Buton-Desc-rating" onClick={ratingDesc} > ⭐5/0 </button>
-      <div>
-            
+      <div>            
             <select className='Filtro-api-db'  onChange={filterByApiDB}> 
               <option value = "All">All Videgomas</option> 
               <option value = "false">API</option> 
@@ -223,10 +220,7 @@ function Home() {
              <h1> <Link className='buton-link-home' to="/"> Welcome  </Link></h1>
       </div>
 
-
       <div>
-
-
             <select className='Select-Genre' name="genres"  onChange={filterByGenres} >
               <option value='All'> Filter for genre</option>
               {genres?.map(genre=>
