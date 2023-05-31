@@ -88,8 +88,8 @@ function Home() {
       setFilterGenre(event.target.value)
       filtrogenero = event.target.value
     }else{
-      setFilterCreated(event.target.value)
-      filtroCreado = event.target.value
+      setFilterCreated(String(event.target.value))
+      filtroCreado = String(event.target.value)
     }
     allVideogames = allvideogamesCopy
 
@@ -98,8 +98,6 @@ function Home() {
     console.log(filtroCreado)
     console.log(filtrogenero)
     
-
-
     if(filtrogenero !== "allgenres" ){
       var filtered = []
       for( let i = 0 ; i< allVideogames.length; i++ ){
@@ -113,7 +111,9 @@ function Home() {
     if(filtroCreado !== "Allapidb"){
       var filtered = []
       for( let i = 0 ; i< allVideogames.length; i++ ){
-        if(String( allVideogames[i].created )=== filterCreated ){
+        console.log(String(allVideogames[i].created))
+        console.log()
+        if(String(allVideogames[i].created) === filtroCreado ){
           filtered.push(allVideogames[i])
         }
       }
@@ -235,7 +235,7 @@ function Home() {
       <div>
 
 
-            <select className='Select-Genre' name="genres" value={genres} onChange={filter} >
+            <select className='Select-Genre' name="genres"  onChange={filter} >
               <option value='allgenres'> Filter for genre</option>
               {genres?.map(genre=>
                 <option value={genre} key={genre}>{genre} </option>
