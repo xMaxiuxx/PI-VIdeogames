@@ -1,8 +1,8 @@
 .cards-container{
-    width: 70vw;
+    width: 65vw;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-gap: 25px;
 
 }
