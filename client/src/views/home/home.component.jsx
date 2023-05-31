@@ -228,7 +228,7 @@ function Home() {
 
 
             <select className='Select-Genre' name="genres"  onChange={filterByGenres} >
-              <option value='select'> Filter for genre</option>
+              <option value='All'> Filter for genre</option>
               {genres?.map(genre=>
                 <option value={genre} key={genre}>{genre} </option>
               )}
