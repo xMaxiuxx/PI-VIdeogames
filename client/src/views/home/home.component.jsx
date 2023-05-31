@@ -71,25 +71,58 @@ function Home() {
     setCurrentPage(prevPage);
   }
   //!--------------------------------------------------- Filter By Api,DB -----------------------
+  const [filterGenre, setFilterGenre] = useState("allgenres");  
+  const [filterCreated, setFilterCreated] = useState("Allapidb");  
 
-  const filterByApiDB= (event)=>{
-    console.log("estoy en Filtro principio")
+  
+
+  const filter= (event)=>{
+        console.log("estoy en Filtro principio")
+    
+    console.log(event.target.value)
+    console.log(event.target.name)
     console.log(allVideogames.length);
-    if(event.target.value === "All"){
-      allVideogames = allvideogamesCopy 
-      dispatch(upDateAllvideogames(allvideogamesCopy))
+    var filtrogenero = filterGenre
+    var filtroCreado = filterCreated
+    if(event.target.name === "genres"){
+      setFilterGenre(event.target.value)
+      filtrogenero = event.target.value
     }else{
-      const created = String(event.target.value)
+      setFilterCreated(event.target.value)
+      filtroCreado = event.target.value
+    }
+    allVideogames = allvideogamesCopy
+
+    console.log(filterGenre)
+    console.log(filterCreated)
+    console.log(filtroCreado)
+    console.log(filtrogenero)
+    
+
+
+    if(filtrogenero !== "allgenres" ){
       var filtered = []
-      for( let i = 0 ; i< allvideogamesCopy.length; i++ ){
-        
-        if(String( allvideogamesCopy[i].created )=== created ){
-          filtered.push(allvideogamesCopy[i])
+      for( let i = 0 ; i< allVideogames.length; i++ ){
+        if( allVideogames[i].genres.includes(filtrogenero)){
+          filtered.push(allVideogames[i])
         }
       }
-      dispatch(upDateAllvideogames(filtered))
       allVideogames = filtered
     }
+
+    if(filtroCreado !== "Allapidb"){
+      var filtered = []
+      for( let i = 0 ; i< allVideogames.length; i++ ){
+        if(String( allVideogames[i].created )=== filterCreated ){
+          filtered.push(allVideogames[i])
+        }
+      }
+      allVideogames = filtered
+    }
+
+
+    dispatch(upDateAllvideogames(allVideogames))
+
     updateGames(0);
     setCurrentPage(0);
     console.log("estoy en el filtro  final")
@@ -108,32 +141,7 @@ function Home() {
   },[dispatch])
 
 
-// const filterGenres  = ()=>{
 
-// }
-
-
-
-  const filterByGenres= (event)=>{
-    if(event.target.value === "All"){
-      allVideogames = allvideogamesCopy
-      dispatch(upDateAllvideogames(allvideogamesCopy))
-    }else{
-      const genre = String(event.target.value)
-      var filteredbyGenders = []
-      for( let i = 0 ; i< allvideogamesCopy.length; i++ ){
-      String(allvideogamesCopy[i].genre)
-        if( allvideogamesCopy[i].genres.includes(genre)){
-          filteredbyGenders.push(allvideogamesCopy[i])
-        }
-
-      }
-      allVideogames = filteredbyGenders
-      dispatch(upDateAllvideogames(filteredbyGenders))
-    }
-    updateGames(0);
-    setCurrentPage(0);
-  }
   
   //!--------------------------------------------------- Sort By rating -----------------------
   
@@ -215,8 +223,8 @@ function Home() {
       <button className="Buton-Desc-rating" onClick={ratingDesc} > ⭐5/0 </button>
       <div>
             
-            <select className='Filtro-api-db'  onChange={filterByApiDB}> 
-              <option value = "All">All Videgomas</option> 
+            <select className='Filtro-api-db' name="created" onChange={filter}> 
+              <option value = "Allapidb">All Videgomas</option> 
               <option value = "false">API</option> 
               <option value = "true" >BDD</option> 
             </select> 
@@ -227,8 +235,8 @@ function Home() {
       <div>
 
 
-            <select className='Select-Genre' name="genres" value={genres} onChange={filterByGenres} >
-              <option value='select'> Filter for genre</option>
+            <select className='Select-Genre' name="genres" value={genres} onChange={filter} >
+              <option value='allgenres'> Filter for genre</option>
               {genres?.map(genre=>
                 <option value={genre} key={genre}>{genre} </option>
               )}
