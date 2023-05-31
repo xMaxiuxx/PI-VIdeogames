@@ -227,7 +227,7 @@ function Home() {
       <div>
 
 
-            <select className='Select-Genre' name="genres" value={genres} onChange={filterByGenres} >
+            <select className='Select-Genre' name="genres"  onChange={filterByGenres} >
               <option value='select'> Filter for genre</option>
               {genres?.map(genre=>
                 <option value={genre} key={genre}>{genre} </option>
